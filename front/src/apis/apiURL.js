@@ -1,1 +1,2 @@
-export const REGISTRATION_API = "http://localhost:9090/api/v1";
+export const REGISTRATION_API =
+  "https://registration-api1.herokuapp.com/api/v1";
