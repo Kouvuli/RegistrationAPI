@@ -33,7 +33,7 @@ public class AccountController {
                     new ResponseObjectPagination(null,"failed","Cannot find user","")
             );
         }
-        Page<Account> userPage=accountService.getAccount(PageRequest.of(page,limit));
+        Page<Account> userPage=accountService.getAccount(PageRequest.of(page-1,limit));
         return ResponseEntity.status(HttpStatus.OK).body(
                 new ResponseObjectPagination(new Pagination(userPage.getTotalPages()-1,userPage.hasNext(),page,limit),"ok","",userPage.getContent())
         );
