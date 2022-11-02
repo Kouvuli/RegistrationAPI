@@ -5,7 +5,12 @@ const Home = () => {
     e.preventDefault();
     localStorage.removeItem("user");
   };
-  return <button onClick={logOutHandler}>Log out</button>;
+  return (
+    <>
+      <div>Home Page</div>
+      <button onClick={logOutHandler}>Log out</button>;
+    </>
+  );
 };
 
 export default Home;

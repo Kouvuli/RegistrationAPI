@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import registrationApi from "../../apis/registrationApi";
-import "./Login.css";
+import SignUpForm from "../../components/Form/SignUpForm";
+
 const Login = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
   const [signUpData, setSignUpData] = useState({});
@@ -26,7 +27,7 @@ const Login = () => {
   };
   return (
     <div className="form-structor">
-      <form
+      {/* <form
         onSubmit={signupHandler}
         className={`signup ${!isSignUpOpen ? "slide-up" : ""}`}
       >
@@ -81,7 +82,11 @@ const Login = () => {
           />
         </div>
         <button className="submit-btn">Sign up</button>
-      </form>
+      </form> */}
+      <SignUpForm
+        isSignUpOpen={isSignUpOpen}
+        signUpOpenHandler={signUpOpenHandler}
+      />
       <form
         onSubmit={loginHandler}
         className={`login ${isSignUpOpen ? "slide-up" : ""}`}

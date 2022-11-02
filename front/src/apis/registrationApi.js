@@ -1,30 +1,25 @@
 import axiosClient from "./axiosClient";
 import { REGISTRATION_API } from "./apiURL";
 import authHeader from "../utils/auth-header";
-
+import axios from "axios";
 const request = axiosClient(REGISTRATION_API);
 
 const registrationApi = {
-  registerUser: ({ fullname, birthday, username, password }) => {
+  registerUser: async (params) => {
     const url = `/auth/signup`;
 
     return request.post(url, {
-      fullname,
-      birthday,
-      username,
-      password,
+      params,
     });
   },
-  authenticateUser: ({ username, password }) => {
+  authenticateUser: async (params) => {
     const url = `/auth/signin`;
 
-    return request.post(url, { username, password }).then((response) => {
-      if (response.data.access_token) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-
-      return response.data;
-    });
+    const response = await request.post(url, { params });
+    if (response.data.access_token) {
+      localStorage.setItem("user", JSON.stringify(response.data));
+    }
+    return response.data;
   },
 
   getUserById: (id) => {
