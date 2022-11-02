@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import registrationApi from "../../apis/registrationApi";
+import LoginForm from "../../components/Form/LoginForm";
 import SignUpForm from "../../components/Form/SignUpForm";
 
 const Login = () => {
   const [isSignUpOpen, setIsSignUpOpen] = useState(false);
-  const [signUpData, setSignUpData] = useState({});
   const [loginData, setLoginData] = useState({});
   useEffect(() => {}, []);
   const loginHandler = (e) => {
@@ -14,13 +14,7 @@ const Login = () => {
     }
     registrationApi.authenticateUser(loginData);
   };
-  const signupHandler = (e) => {
-    e.preventDefault();
-    if (!signUpData || !signUpData.username || !signUpData.password) {
-      return;
-    }
-    registrationApi.registerUser(signUpData);
-  };
+
   const signUpOpenHandler = (e) => {
     e.preventDefault();
     setIsSignUpOpen((prev) => !prev);
@@ -87,7 +81,11 @@ const Login = () => {
         isSignUpOpen={isSignUpOpen}
         signUpOpenHandler={signUpOpenHandler}
       />
-      <form
+      <LoginForm
+        isSignUpOpen={isSignUpOpen}
+        signUpOpenHandler={signUpOpenHandler}
+      />
+      {/* <form
         onSubmit={loginHandler}
         className={`login ${isSignUpOpen ? "slide-up" : ""}`}
       >
@@ -124,7 +122,7 @@ const Login = () => {
           </div>
           <button className="submit-btn">Log in</button>
         </div>
-      </form>
+      </form> */}
     </div>
   );
 };

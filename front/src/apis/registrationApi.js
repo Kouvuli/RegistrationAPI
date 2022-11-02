@@ -5,17 +5,20 @@ import axios from "axios";
 const request = axiosClient(REGISTRATION_API);
 
 const registrationApi = {
-  registerUser: async (params) => {
+  registerUser: async ({ fullname, birthday, username, password }) => {
     const url = `/auth/signup`;
 
     return request.post(url, {
-      params,
+      fullname,
+      birthday,
+      username,
+      password,
     });
   },
-  authenticateUser: async (params) => {
+  authenticateUser: async ({ username, password }) => {
     const url = `/auth/signin`;
 
-    const response = await request.post(url, { params });
+    const response = await request.post(url, { username, password });
     if (response.data.access_token) {
       localStorage.setItem("user", JSON.stringify(response.data));
     }

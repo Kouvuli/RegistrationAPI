@@ -9,12 +9,12 @@ const LoginForm = ({ isSignUpOpen, signUpOpenHandler }) => {
     watch,
     formState: { errors },
   } = useForm();
-  const loginHandler = (e) => {
-    e.preventDefault();
-    if (!loginData || !loginData.username || !loginData.password) {
+  const loginHandler = async (data) => {
+    if (!data || !data.username || !data.password) {
       return;
     }
-    registrationApi.authenticateUser(loginData);
+    await registrationApi.authenticateUser(data);
+    window.location.reload();
   };
   return (
     <form
@@ -32,23 +32,14 @@ const LoginForm = ({ isSignUpOpen, signUpOpenHandler }) => {
             type="text"
             className="input"
             placeholder="Username"
-            onChange={(e) => {
-              setLoginData((prev) => {
-                return { ...prev, username: e.target.value };
-              });
-            }}
+            {...register("username")}
             required
           />
           <input
             type="password"
             className="input"
             placeholder="Password"
-            onChange={(e) => {
-              console.log(loginData);
-              setLoginData((prev) => {
-                return { ...prev, password: e.target.value };
-              });
-            }}
+            {...register("password")}
             required
           />
         </div>

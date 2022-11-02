@@ -3,17 +3,9 @@ import Login from "../pages/Login/Login";
 
 const PATHS = {
   LOGIN: "/login",
-
-  LOGOUT: "/logout",
 };
 
-const routeHome = [
-  {
-    exact: true,
-    path: "/",
-    component: Home,
-  },
-
+const ROUTES = [
   {
     exact: true,
     path: PATHS.LOGIN,
@@ -21,4 +13,12 @@ const routeHome = [
   },
 ];
 
-export { routeHome, PATHS };
+const AUTH_ROUTES = [
+  {
+    exact: true,
+    path: "/",
+    component: Home,
+  },
+];
+
+export { AUTH_ROUTES, ROUTES, PATHS };

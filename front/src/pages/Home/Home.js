@@ -4,12 +4,14 @@ const Home = () => {
   const logOutHandler = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
+    window.location.reload();
   };
   return (
-    <>
+    <div className="layout-center">
       <div>Home Page</div>
-      <button onClick={logOutHandler}>Log out</button>;
-    </>
+      <br />
+      <button onClick={logOutHandler}>Log out</button>
+    </div>
   );
 };
 

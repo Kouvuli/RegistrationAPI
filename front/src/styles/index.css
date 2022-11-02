@@ -225,3 +225,16 @@
   visibility: visible;
   -webkit-transition: all 0.3s ease;
 }
+
+.layout-center {
+  margin: 50% auto;
+  text-align: center;
+}
+
+.layout-center span.border {
+  background-color: #111;
+  color: #fff;
+  padding: 18px;
+  font-size: 25px;
+  letter-spacing: 10px;
+}

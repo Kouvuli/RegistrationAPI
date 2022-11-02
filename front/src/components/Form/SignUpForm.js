@@ -10,13 +10,8 @@ const SignUpForm = ({ isSignUpOpen, signUpOpenHandler }) => {
     formState: { errors },
   } = useForm();
 
-  const signup = async () => {
-    await registrationApi.registerUser({
-      username: "ldtam2",
-      birthday: "11/02/2001",
-      fullname: "LED TAM",
-      password: "123",
-    });
+  const signup = async (data) => {
+    await registrationApi.registerUser(data);
     console.log("success");
   };
   const signupHandler = async (data) => {
@@ -24,7 +19,7 @@ const SignUpForm = ({ isSignUpOpen, signUpOpenHandler }) => {
       return;
     }
     try {
-      await signup();
+      await signup(data);
     } catch (err) {
       console.log(err);
     }
